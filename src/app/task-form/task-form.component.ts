@@ -2,6 +2,7 @@ import { Task } from './../task.model';
 import { Component } from '@angular/core';
 import { addTask } from '../taskSlice';
 import { Store } from '@ngrx/store';
+import { v4 as uuidv4} from 'uuid';
 
 @Component({
   selector: 'app-task-form',
@@ -16,11 +17,18 @@ import { Store } from '@ngrx/store';
 export class TaskFormComponent {
   constructor(private store: Store) {}
 
+  newTask: Task = {
+    id: '',
+    name:'',
+    description: ''
+  };
+
+
   onSubmit() {
     const newTask: Task = {
-      id: 1, // pеальное значение
-      name: 'New Task', // реальное значение
-      description: 'Description of the new task' // реальное значение
+      id: uuidv4(), // Генерация уникального идентификатора
+      name: this.newTask.name, // реальное значение
+      description: this.newTask.description// реальное значение
     };
     this.store.dispatch(addTask(newTask));
   }

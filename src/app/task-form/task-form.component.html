@@ -1,1 +1,12 @@
-<p>task-form works!</p>
+<form (submit)="onSubmit()">
+    <div>
+      <label for="taskName">Task Name:</label>
+      <input type="text" id="taskName" [(ngModel)]="newTask.name" name="taskName">
+    </div>
+    <div>
+      <label for="taskDescription">Task Description:</label>
+      <textarea id="taskDescription" [(ngModel)]="newTask.description" name="taskDescription"></textarea>
+    </div>
+    <button type="submit">Add Task</button>
+  </form>
+  
