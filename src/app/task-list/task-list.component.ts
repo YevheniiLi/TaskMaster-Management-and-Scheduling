@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { TaskState } from '../taskSlice';
+import AppState from '../taskSlice';
 import { createSelector, select, Store } from '@ngrx/store';
+import { TaskState } from '../taskSlice';
 
-const selectTaskState = (state: {tasks: TaskState }) => state.tasks; // Используйте TaskState
+const selectTaskState = (state: AppState) => state.tasks;
 
 const selectAllTasks = createSelector(
   selectTaskState,
-  (taskState) => taskState.tasks 
+  (taskState: TaskState) => taskState.tasks
 );
 
 @Component({
